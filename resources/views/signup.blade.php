@@ -100,8 +100,15 @@ License: You must have a valid license purchased only from themeforest(the above
                 <h4 class="card-title mb-1">Welcome to Vuexy! 👋</h4>
                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
-                <form class="auth-login-form mt-2" action="{{route('login')}}" method="POST">
+                <form class="auth-login-form mt-2" action="{{route('signin')}}" method="POST">
                   @csrf
+                  <div class="mb-1">
+                    <label for="login-email" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="login-email" name="name" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
+                  </div>
+                  @error('name')
+                  <span class="text-danger">{{$message}}</span>
+                  @enderror
                   <div class="mb-1">
                     <label for="login-email" class="form-label">Email</label>
                     <input type="text" class="form-control" id="login-email" name="email" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
@@ -112,9 +119,6 @@ License: You must have a valid license purchased only from themeforest(the above
                   <div class="mb-1">
                     <div class="d-flex justify-content-between">
                       <label class="form-label" for="login-password">Password</label>
-                      <a href="auth-forgot-password-basic.html">
-                        <small>Forgot Password?</small>
-                      </a>
                     </div>
                     <div class="input-group input-group-merge form-password-toggle">
                       <input type="password" class="form-control form-control-merge" id="login-password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
@@ -124,21 +128,22 @@ License: You must have a valid license purchased only from themeforest(the above
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                   </div>
-                  <!-- <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="remember-me" tabindex="3" />
-                      <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  <div class="mb-1">
+                    <div class="d-flex justify-content-between">
+                      <label class="form-label" for="login-password">Re-password</label>
                     </div>
-                  </div> -->
-                  <button type="submit" class="btn btn-primary w-100" tabindex="4">Đăng Nhập</button>
+                    <div class="input-group input-group-merge form-password-toggle">
+                      <input type="password" class="form-control form-control-merge" id="login-password" name="password_again" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
+                      <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                    </div>
+                    @error('password_again')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" tabindex="4">Đăng Ký</button>
                 </form>
 
-                <p class="text-center mt-2">
-                  <span>New on our platform?</span>
-                  <a href="{{route('signin')}}">
-                    <span>Create an account</span>
-                  </a>
-                </p>
+                
 
 
               </div>

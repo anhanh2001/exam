@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::post('/',[LoginController::class,'postLogin']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/signup',[LoginController::class,'signin'])->name('signin');
+Route::post('/signup',[LoginController::class,'postSignin']);
+
 Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager')->group(function () {
 
     Route::prefix('user')->group(function () {
