@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\QuestionController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.page.user.index');
-});
-Route::prefix('admin')->group(function () {
+Route::get('/',[LoginController::class,'login'])->name('login');
+Route::post('/',[LoginController::class,'postLogin']);
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager')->group(function () {
 
     Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('user.list');

@@ -76,8 +76,8 @@
                 <!-- list and filter start -->
                 <div class="card">
                     <div class="card-header border-bottom p-1">
-                        <h4 class="card-title col-sm-10">Vai Trò
-                        <a href="{{route('role.add')}}"><button  class="btn btn-primary">Thêm Mới</button></a>
+                        <h4 class="card-title col-sm-10">Vai Trò</h4>
+                        <a class="btn btn-primary" href="{{route('role.add')}}">Thêm Mới</a>
                         <div class="row">
                             <div class="col-md-4 user_role"></div>
                             <div class="col-md-4 user_plan"></div>

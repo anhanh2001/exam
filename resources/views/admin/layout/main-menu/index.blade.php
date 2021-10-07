@@ -75,11 +75,7 @@
                               href="{{route('user.list')}}"><i data-feather="users"></i><span
                                     class="menu-title text-truncate" data-i18n="Users">Tài khoản</span></a>
                   </li>
-                  <li class="nav-item {{ request()->is('staff*') ? 'active' : '' }}"><a
-                              class="d-flex align-items-center" href="ok"><i
-                                    data-feather='user-check'></i><span class="menu-title text-truncate"
-                                    data-i18n="Users">Nhân viên</span></a>
-                  </li>
+                  
                   <li class="navigation-header"><span data-i18n="Tài khoản">Phân quyền</span><i
                               data-feather="more-horizontal"></i>
                   </li>
@@ -99,7 +95,7 @@
                               </li>
                         </ul>
                   </li>
-                  <li class=" navigation-header"><span data-i18n="Dịch vụ">Dịch vụ</span><i
+                  <li class=" navigation-header"><span data-i18n="Dịch vụ">Tài Liệu</span><i
                               data-feather="more-horizontal"></i>
                   </li>
                   <li class=" nav-item {{ request()->is('question*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('question.list')}}"><i
@@ -107,11 +103,7 @@
                                     data-i18n="Dịch vụ lẻ">Danh Sách Câu Hỏi</span></a>
 
                   </li>
-                  <li class=" nav-item {{ request()->is('cate-service*') ? 'active' : '' }}"><a class="d-flex align-items-center" href=""><i
-                                    data-feather="list"></i><span class="menu-title text-truncate"
-                                    data-i18n="Dịch vụ lẻ">Danh mục Dịch vụ</span></a>
-
-                  </li>
+                  
 
 
                   
