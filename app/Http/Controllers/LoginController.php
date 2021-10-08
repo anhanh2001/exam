@@ -38,11 +38,11 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return view('welcome');
     }
     public function signin()
     {
-        return view('welcome');
+        return view('signup');
     }
     public function postSignin(Request $request)
     {
