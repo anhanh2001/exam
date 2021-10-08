@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\QuestionController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\client\MultipleChoiceController;
 use App\Http\Controllers\LoginController;
 use App\Models\Question;
 use App\Models\User;
@@ -32,6 +33,11 @@ Route::post('/login',[LoginController::class,'postLogin']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/signup',[LoginController::class,'signin'])->name('signin');
 Route::post('/signup',[LoginController::class,'postSignin']);
+
+//user
+Route::get('/multiple-choice/{id}',[MultipleChoiceController::class,'question'])->name('multi');
+Route::post('/multiple-choice/{id}',[MultipleChoiceController::class,'point']);
+//admin
 
 Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager')->group(function () {
 

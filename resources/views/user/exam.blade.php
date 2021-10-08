@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Exam')
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -25,51 +25,48 @@
                 </div>
             </div>
             <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
-                <div class="mb-1 breadcrumb-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="content-body">
             <!-- Basic Radio Button start -->
             <section id="basic-radio">
                 <div class="row">
-                    <div class="col-12">
-                        @php $dem =1;@endphp
-                        @foreach($model as $c)
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Câu hỏi {{$dem++}} : {{$c->question}}     ({{$c->point_question}} point)</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="demo--spacing">
-                                    <div class="form-check form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked />
-                                        <label class="form-check-label" for="inlineRadio1">1.&nbsp&nbsp{{$c->answer_1}}</label>
-                                    </div>
-                                    <div class="form-check form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked />
-                                        <label class="form-check-label" for="inlineRadio1">2.&nbsp&nbsp{{$c->answer_2}}</label>
-                                    </div>
-                                    <div class="form-check form-check-inline mb-1">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked />
-                                        <label class="form-check-label" for="inlineRadio1">3.&nbsp&nbsp{{$c->answer_3}}</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked />
-                                        <label class="form-check-label" for="inlineRadio1">4.&nbsp&nbsp{{$c->answer_4}}</label>
+                    <form action="{{route('multi',$id)}}" method="post">
+                        @csrf
+                        <div class="col-12">
+                            @php $dem =1;@endphp
+                            @foreach($model as $c)
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Câu hỏi {{$dem++}} : {{$c->question}} ({{$c->point_question}} point)</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="demo--spacing">
+                                        <div class="form-check form-check-inline mb-1">
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="1" />
+                                            <label class="form-check-label" for="inlineRadio1">1.&nbsp&nbsp{{$c->answer_1}}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline mb-1">
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="2" />
+                                            <label class="form-check-label" for="inlineRadio1">2.&nbsp&nbsp{{$c->answer_2}}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline mb-1">
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="3" />
+                                            <label class="form-check-label" for="inlineRadio1">3.&nbsp&nbsp{{$c->answer_3}}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="4" />
+                                            <label class="form-check-label" for="inlineRadio1">4.&nbsp&nbsp{{$c->answer_4}}</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary">Submit</button>
-                    </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </section>
             <!-- Basic Radio Button end -->
@@ -77,4 +74,27 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $('form').on('submit', function() {
+        var emptyCount = 0;
+        $('.card').each(function() {
+            var found = false;
+            $(this).find('input[type=radio]').each(function() {
+                if ($(this).prop('checked')) {
+                    found = true;
+                }
+            });
+            if (!found) {
+                emptyCount++;
+            }
+        });
+        if (emptyCount > 0) {
+            toastr.error('Bạn Chưa Làm Đủ');
+            return false;
+        }
+        return true;
+    });
+</script>
 @endsection
