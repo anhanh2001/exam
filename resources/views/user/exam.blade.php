@@ -42,7 +42,7 @@
                         @foreach($model as $c)
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Question {{$dem++}} : {{$c->question}}     (2 point)</h4>
+                                <h4 class="card-title">Câu hỏi {{$dem++}} : {{$c->question}}     ({{$c->point_question}} point)</h4>
                             </div>
                             <div class="card-body">
                                 <div class="demo--spacing">

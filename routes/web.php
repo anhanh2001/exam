@@ -26,7 +26,7 @@ Route::get('/test',function(){
 });
 Route::get('/',function(){
     return view('welcome');
-});
+})->name('dashboard');
 Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

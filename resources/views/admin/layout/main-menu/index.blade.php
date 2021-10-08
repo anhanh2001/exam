@@ -52,21 +52,7 @@
       <div class="shadow-bottom"></div>
       <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
-                                    data-feather="home"></i><span class="menu-title text-truncate"
-                                    data-i18n="Dashboards">Trang chính</span><span
-                                    class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
-                        <ul class="menu-content">
-                              <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i
-                                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                                data-i18n="Analytics">Lịch</span></a>
-                              </li>
-                              <li class=""><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i
-                                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                                data-i18n="eCommerce">Thống kê</span></a>
-                              </li>
-                        </ul>
-                  </li>
+                  
                   @role('super_admin')
                   <li class="navigation-header"><span data-i18n="Tài khoản">Tài Khoản</span><i
                               data-feather="more-horizontal"></i>

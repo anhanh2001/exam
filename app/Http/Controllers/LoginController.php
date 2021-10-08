@@ -28,7 +28,7 @@ class LoginController extends Controller
             // $request->session()->regenerate();
             // $user = auth()->user();
             // // dd($user);
-            return redirect()->route('user.list');
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([
