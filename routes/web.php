@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\LoginController;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,11 @@ Route::get('/test',function(){
     $model = Question::all();
     return view('user.exam',compact('model'));
 });
-Route::get('/',[LoginController::class,'login'])->name('login');
-Route::post('/',[LoginController::class,'postLogin']);
+Route::get('/',function(){
+    return view('welcome');
+});
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'postLogin']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/signup',[LoginController::class,'signin'])->name('signin');
 Route::post('/signup',[LoginController::class,'postSignin']);

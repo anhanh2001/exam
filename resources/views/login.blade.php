@@ -124,12 +124,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                   </div>
-                  <!-- <div class="mb-1">
+                  <div class="mb-1">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="remember-me" tabindex="3" />
+                      <input class="form-check-input" type="checkbox" value="remember_me" name="remember_me" tabindex="3" />
                       <label class="form-check-label" for="remember-me"> Remember Me </label>
                     </div>
-                  </div> -->
+                  </div>
                   <button type="submit" class="btn btn-primary w-100" tabindex="4">Đăng Nhập</button>
                 </form>
 
