@@ -91,7 +91,7 @@
 
                                     <th>Họ & Tên</th>
                                     <th>Email</th>
-                                    <th>Password</th>
+                                    <th>Vai Trò</th>
                                     <th>Thao Tác</th>
                                     <!-- <th>Hành động</th>  -->
                                 </tr>
@@ -101,7 +101,7 @@
                                 <tr>
                                     <td>{{$c->name}}</td>
                                     <td>{{$c->email}}</td>
-                                    <td>{{$c->password}}</td>
+                                    <td>{{$c->getRoleNames()->first()}}</td>
                                     <td><a class="btn btn-warning" href="{{route('user.edit',$c->id)}}">Sửa</a>&nbsp<a onclick="return confirm('Bạn có chắc chắn xóa ?');" href="{{route('user.remove',$c->id)}}" class="btn btn-danger">Xóa</a></td>
                                 </tr>
                                 @endforeach

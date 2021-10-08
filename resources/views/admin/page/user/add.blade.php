@@ -102,6 +102,44 @@
                                         <div class="valid-feedback">Looks good!</div>
                                         <div class="invalid-feedback">Please enter your password.</div>
                                     </div>
+                                    <div class="mb-1">
+                                        <h4 class="mt-2 pt-50">Vai Trò</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-flush-spacing">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap fw-bolder">Super Admin</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="form-check me-3 me-lg-5">
+                                                                    <input class="form-check-input" value="super_admin" name="role" type="radio" id="userManagementRead" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap fw-bolder">Manager</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="form-check me-3 me-lg-5">
+                                                                    <input class="form-check-input" value="manager" name="role" type="radio" id="userManagementRead" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap fw-bolder">User</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="form-check me-3 me-lg-5">
+                                                                    <input class="form-check-input" value="user" name="role" type="radio" id="userManagementRead" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     
                                     <button type="submit" class="btn btn-primary">Add User</button>
                                 </form>

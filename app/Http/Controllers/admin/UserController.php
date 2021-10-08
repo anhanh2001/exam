@@ -22,6 +22,7 @@ class UserController extends Controller
         $model->fill($request->all());
         $model['password'] = Hash::make($request->password);
         $model->save();
+        $model->assignRole($request->role);
         return redirect()->route('user.list');
     }
     public function edit($id){
