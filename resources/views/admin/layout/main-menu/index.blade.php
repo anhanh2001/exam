@@ -67,15 +67,16 @@
                               </li>
                         </ul>
                   </li>
-
+                  @role('super_admin')
                   <li class="navigation-header"><span data-i18n="Tài khoản">Tài Khoản</span><i
                               data-feather="more-horizontal"></i>
                   </li>
-                  <li class="nav-item {{ request()->is('user*') ? 'active' : '' }}"><a class="d-flex align-items-center"
+                  <li class="nav-item {{ request()->routeIs('user*') ? 'active' : '' }}"><a class="d-flex align-items-center"
                               href="{{route('user.list')}}"><i data-feather="users"></i><span
                                     class="menu-title text-truncate" data-i18n="Users">Tài khoản</span></a>
                   </li>
-                  
+                  @endrole
+                  @role('super_admin')
                   <li class="navigation-header"><span data-i18n="Tài khoản">Phân quyền</span><i
                               data-feather="more-horizontal"></i>
                   </li>
@@ -83,27 +84,29 @@
                                     class="menu-title text-truncate" data-i18n="Roles &amp; Permission">Vai trò &amp;
                                     Quyền</span></a>
                         <ul class="menu-content">
-                              <li class="{{ request()->is('role*') ? 'active' : '' }}"><a
+                              <li class="{{ request()->routeIs('role*') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('role.list')}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                                 data-i18n="Roles">Vai trò</span></a>
                               </li>
-                              <li class="{{ request()->is('permission*') ? 'active' : '' }}"><a
+                              <li class="{{ request()->routeIs('permission*') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('permission.list')}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                                 data-i18n="Permission">Quyền</span></a>
                               </li>
                         </ul>
                   </li>
+                  @endrole
+                  @role('super_admin|manager')
                   <li class=" navigation-header"><span data-i18n="Dịch vụ">Tài Liệu</span><i
                               data-feather="more-horizontal"></i>
                   </li>
-                  <li class=" nav-item {{ request()->is('question*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('question.list')}}"><i
+                  <li class=" nav-item {{ request()->routeIs('question*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('question.list')}}"><i
                                     data-feather='shopping-bag'></i><span class="menu-title text-truncate"
                                     data-i18n="Dịch vụ lẻ">Danh Sách Câu Hỏi</span></a>
 
                   </li>
-                  
+                  @endrole
 
 
                   
