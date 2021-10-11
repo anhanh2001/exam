@@ -41,7 +41,7 @@ Route::post('/multiple-choice/{id}',[MultipleChoiceController::class,'point']);
 
 Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager')->group(function () {
 
-    Route::prefix('user')->group(function () {
+    Route::prefix('user')->middleware('role:super_admin')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('user.list');
         Route::get('/add', [UserController::class, 'add'])->name('user.add');
         Route::post('/add', [UserController::class, 'postAdd']);
@@ -49,7 +49,7 @@ Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager
         Route::post('/edit/{id}', [UserController::class, 'postEdit']);
         Route::get('/delete/{id}', [UserController::class, 'delete'])->name('user.remove');
     });
-    Route::prefix('role')->group(function () {
+    Route::prefix('role')->middleware('role:super_admin')->group(function () {
         Route::get('/', [RoleController::class, 'index'])->name('role.list');
         Route::get('/add', [RoleController::class, 'add'])->name('role.add');
         Route::post('/add', [RoleController::class, 'postAdd']);
