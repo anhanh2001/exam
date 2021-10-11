@@ -100,13 +100,13 @@
                   <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='check'></i><span
                                     class="menu-title text-truncate" data-i18n="Roles &amp; Permission">Trắc nghiệm</span></a>
                         <ul class="menu-content">
-                              <li class="{{ request()->routeIs('multi',10) ? 'active' : '' }}"><a
+                              <li class="{{ request()->is('multiple-choice/10') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('multi',10)}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                                 data-i18n="Roles">Trắc Nghiệm 10 câu</span></a>
                               </li>
                               <!-- phần css khi chọn vào bài thi vẫn đang hỏng. cần sửa -->
-                              <li class="{{ request()->routeIs('multi',20) ? 'active' : '' }}"><a
+                              <li class="{{ request()->is('multiple-choice/20') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('multi',20)}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                                 data-i18n="Permission">Trắc Nghiệm 20 câu</span></a>
