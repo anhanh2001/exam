@@ -43,20 +43,20 @@
                                 <div class="card-body">
                                     <div class="demo--spacing">
                                         <div class="form-check form-check-inline mb-1">
-                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="1" />
-                                            <label class="form-check-label" for="inlineRadio1">1.&nbsp&nbsp{{$c->answer_1}}</label>
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="" value="1" />
+                                            <label class="form-check-label" for="">1.&nbsp&nbsp{{$c->answer_1}}</label>
                                         </div>
                                         <div class="form-check form-check-inline mb-1">
-                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="2" />
-                                            <label class="form-check-label" for="inlineRadio1">2.&nbsp&nbsp{{$c->answer_2}}</label>
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="" value="2" />
+                                            <label class="form-check-label" for="">2.&nbsp&nbsp{{$c->answer_2}}</label>
                                         </div>
                                         <div class="form-check form-check-inline mb-1">
-                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="3" />
-                                            <label class="form-check-label" for="inlineRadio1">3.&nbsp&nbsp{{$c->answer_3}}</label>
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="" value="3" />
+                                            <label class="form-check-label" for="">3.&nbsp&nbsp{{$c->answer_3}}</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="inlineRadio1" value="4" />
-                                            <label class="form-check-label" for="inlineRadio1">4.&nbsp&nbsp{{$c->answer_4}}</label>
+                                            <input class="form-check-input" type="radio" name="question[{{$c->id}}]" id="" value="4" />
+                                            <label class="form-check-label" for="">4.&nbsp&nbsp{{$c->answer_4}}</label>
                                         </div>
                                     </div>
                                 </div>
