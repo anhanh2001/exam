@@ -34,6 +34,9 @@
 
                     <div class="col-12">
                         @php $dem =1;@endphp
+                        @if($question==[])
+                            <h2>Không có đáp án đã chọn</h2>
+                        @endif
                         @foreach($question as $c)
                         <div class="card">
                             <div class="card-header">

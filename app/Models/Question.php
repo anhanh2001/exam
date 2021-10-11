@@ -18,5 +18,6 @@ class Question extends Model
         'answer_3',
         'answer_4',
         'correct_answer',
+        'point_question',
     ];
 }

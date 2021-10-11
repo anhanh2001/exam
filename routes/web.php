@@ -20,11 +20,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//test view exam-question
-Route::get('/test',function(){
-    $model = Question::all();
-    return view('user.exam',compact('model'));
-});
+//client
 Route::get('/',function(){
     return view('welcome');
 })->name('dashboard');
@@ -37,6 +33,10 @@ Route::post('/signup',[LoginController::class,'postSignin']);
 //user
 Route::get('/multiple-choice/{id}',[MultipleChoiceController::class,'question'])->name('multi');
 Route::post('/multiple-choice/{id}',[MultipleChoiceController::class,'point']);
+
+
+
+
 //admin
 
 Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager')->group(function () {

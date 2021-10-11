@@ -34,8 +34,8 @@ class RoleController extends Controller
         return view('admin.page.role.edit',compact('model','per'));
     }
     public function postEdit(Request $request,$id){
-        Role::destroy($id);
-        $role = ModelsRole::create(['name' => $request->name,'guard_name'=> 'web']);
+        RoleHasPermission::where('role_id',$id)->delete();
+        $role = ModelsRole::findById($id);
         $role->syncPermissions($request->permission);
         return redirect()->route('role.list'); 
     }

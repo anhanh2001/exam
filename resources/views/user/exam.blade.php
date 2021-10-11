@@ -25,6 +25,11 @@
                 </div>
             </div>
             <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+                <div class="mb-1 breadcrumb-right">
+                    <div class="dropdown">
+                        <h2 class="text-danger" id="clock"></h2>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="content-body">
@@ -34,11 +39,14 @@
                     <form action="{{route('multi',$id)}}" method="post">
                         @csrf
                         <div class="col-12">
-                            @php $dem =1;@endphp
+                            @php $dem =0;$totalPoint=0;@endphp
                             @foreach($model as $c)
+                            @php
+                            $totalPoint += $c->point_question;
+                            @endphp
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Câu hỏi {{$dem++}} : {{$c->question}} ({{$c->point_question}} point)</h4>
+                                    <h4 class="card-title">Câu hỏi {{++$dem}} : {{$c->question}} ({{$c->point_question}} point)</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="demo--spacing">
@@ -62,9 +70,10 @@
                                 </div>
                             </div>
                             @endforeach
+                            <input type="hidden" name="totalPoint" value="{{$totalPoint}}">
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -77,24 +86,36 @@
 @endsection
 @section('script')
 <script>
-    $('form').on('submit', function() {
-        var emptyCount = 0;
-        $('.card').each(function() {
-            var found = false;
-            $(this).find('input[type=radio]').each(function() {
-                if ($(this).prop('checked')) {
-                    found = true;
-                }
-            });
-            if (!found) {
-                emptyCount++;
+    function startTimer(duration, display) {
+        var timer = duration,
+            minutes, seconds;
+        var countDown = setInterval(function() {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (--timer < 0) {
+                clearInterval(countDown);
+                $('form').submit();
+
             }
-        });
-        if (emptyCount > 0) {
-            toastr.error('Bạn Chưa Làm Đủ');
-            return false;
+        }, 1000);
+    }
+
+    jQuery(function($) {
+        //check địa chỉ trên url nếu id là 10 => thời gian 5p , 20 => thời gian 10p
+        var totalQuestion = null;
+        if (window.location.pathname === '/multiple-choice/10') {
+            totalQuestion = 5*60;
+        } else {
+            totalQuestion = 10*60;
         }
-        return true;
+        var display = $('#clock');
+        startTimer(totalQuestion, display);
     });
 </script>
 @endsection

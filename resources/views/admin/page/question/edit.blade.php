@@ -84,35 +84,35 @@
                                 <form class="needs-validation" action="{{route('question.edit',$model->id)}}" method="POST" novalidate>
                                     @csrf
                                     <div class="mb-1">
-                                        <label class="form-label" for="basic-addon-name">Câu Hỏi</label>
+                                        <label class="form-label" >Câu Hỏi</label>
 
                                         <input type="text" value="{{$model->question}}" name="question" id="basic-addon-name" class="form-control" placeholder="Câu Hỏi" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         <div class="valid-feedback">Looks good!</div>
                                         <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label" for="basic-addon-name">Đáp Án 1</label>
+                                        <label class="form-label" >Đáp Án 1</label>
 
                                         <input type="text" value="{{$model->answer_1}}" name="answer_1" id="basic-addon-name" class="form-control" placeholder="Đáp Án 1" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         <div class="valid-feedback">Looks good!</div>
                                         <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label" for="basic-addon-name">Đáp án 2</label>
+                                        <label class="form-label" >Đáp án 2</label>
 
                                         <input type="text" value="{{$model->answer_2}}" name="answer_2" id="basic-addon-name" class="form-control" placeholder="Đáp Án 2" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         <div class="valid-feedback">Looks good!</div>
                                         <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label" for="basic-addon-name">Đáp án 3</label>
+                                        <label class="form-label" >Đáp án 3</label>
 
                                         <input type="text" value="{{$model->answer_3}}" name="answer_3" id="basic-addon-name" class="form-control" placeholder="Đáp Án 3" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         <div class="valid-feedback">Looks good!</div>
                                         <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label" for="basic-addon-name">Đáp Án 4</label>
+                                        <label class="form-label" >Đáp Án 4</label>
 
                                         <input type="text" value="{{$model->answer_4}}" name="answer_4" id="basic-addon-name" class="form-control" placeholder="Đáp Án 4" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         <div class="valid-feedback">Looks good!</div>
@@ -167,6 +167,11 @@
                                             </table>
                                         </div>
 
+                                    </div>
+                                    <div class="mb-1">
+                                        <label class="form-label" >Điểm Câu Hỏi</label>
+
+                                        <input type="text" value="{{$model->point_question}}" name="point_question" id="basic-addon-name" class="form-control" placeholder="2 điểm" aria-label="Name" aria-describedby="basic-addon-name" required />
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Sửa Câu Hỏi</button>
