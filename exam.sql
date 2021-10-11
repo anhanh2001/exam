@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 08, 2021 at 04:43 PM
+-- Generation Time: Oct 11, 2021 at 03:07 PM
 -- Server version: 8.0.26-0ubuntu0.20.04.3
 -- PHP Version: 7.4.3
 
@@ -90,7 +90,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1),
+(18, 'App\\Models\\User', 1),
 (2, 'App\\Models\\User', 8),
 (15, 'App\\Models\\User', 10),
 (15, 'App\\Models\\User', 11);
@@ -130,8 +130,10 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (2, 'Sửa câu hỏi', 'web', NULL, NULL),
 (3, 'Xóa câu hỏi', 'web', NULL, NULL),
 (4, 'Tạo bài thi', 'web', NULL, NULL),
-(6, 'tao bai thi 2', 'web', '2021-10-06 00:01:15', '2021-10-06 00:01:15'),
-(7, 'tao bai thi 235', 'web', '2021-10-06 00:07:43', '2021-10-06 00:12:06');
+(10, 'Thêm tài khoản', 'web', '2021-10-10 19:50:30', '2021-10-10 19:50:30'),
+(11, 'Sửa tài khoản', 'web', '2021-10-10 19:50:42', '2021-10-10 19:50:42'),
+(12, 'Xóa tài khoản', 'web', '2021-10-10 19:50:49', '2021-10-10 19:50:49'),
+(13, 'Làm bài thi', 'web', '2021-10-10 20:09:54', '2021-10-10 20:09:54');
 
 -- --------------------------------------------------------
 
@@ -195,7 +197,8 @@ INSERT INTO `questions` (`id`, `question`, `answer_1`, `answer_2`, `answer_3`, `
 (18, 'In consequuntur omnis sit corporis nostrum. Et eum amet deleniti dolores. Rerum sed magnam ea dolorem. Recusandae vero optio est sint dicta iste aliquam.', 'Quia maiores vel dolores aut. Possimus tempore consequatur adipisci asperiores. Facilis illo vitae quia rerum. Nobis consequatur minus aut deleniti totam voluptatem praesentium.', 'Non eos excepturi qui eos nihil quibusdam explicabo. Nobis facere doloribus sed natus. Hic voluptas ipsa et assumenda deserunt.', 'Id accusamus sequi sint perferendis. Qui quo non eum ipsa. Enim voluptatum sint est nobis. Magni dolorem est eos fugit. Aut recusandae labore ut et.', 'Ipsam accusamus repellat natus qui adipisci enim. Nihil mollitia perferendis corrupti molestiae. Consectetur quisquam enim laudantium nihil omnis.', 4, 2, '2021-10-06 19:06:31', '2021-10-06 19:06:31'),
 (19, 'Et molestiae quo omnis voluptates sint quia velit. Et et molestiae veniam ut. Autem fuga voluptates rerum. Atque est commodi sed eveniet ipsam perferendis tenetur.', 'Ut et nihil hic reiciendis rerum itaque accusantium excepturi. Blanditiis dolore mollitia autem et.', 'Necessitatibus qui accusantium laudantium autem autem aut quidem ratione. Sit magnam inventore suscipit eius tenetur praesentium. Rem voluptatum velit quia ut aliquid.', 'Doloribus id quae at quod saepe animi sit harum. Illum quas cumque et quis ut. Quam non commodi velit qui earum et. Sunt tenetur nisi totam optio distinctio. Est aut aut perspiciatis atque quia.', 'Perspiciatis expedita culpa quaerat cum ipsam dolor voluptatem nam. Repellendus porro sapiente eos aut. Est repellendus veniam accusantium quia dolor aperiam sit voluptates.', 3, 2, '2021-10-06 19:06:31', '2021-10-06 19:06:31'),
 (20, 'Voluptas deserunt ipsa consectetur inventore distinctio. Recusandae et vero adipisci delectus asperiores et sit. Enim reiciendis sit est quae. Harum autem qui voluptatum repellendus ratione quia.', 'Nam assumenda quis nemo sed voluptatem. Voluptatem quo exercitationem ut cum. Sint aut dolores soluta quas voluptate.', 'Dignissimos ea voluptates fugiat sequi sint corporis ut sed. Sint molestiae optio dolor nihil labore deserunt officia. Deserunt quaerat amet in placeat aut eos.', 'Qui quaerat qui magnam. Iure facere saepe illo mollitia consequatur. Assumenda aliquam quam et dolor et. Maiores aliquam ex qui provident natus est quia.', 'In provident et architecto amet quibusdam et laboriosam. Qui ipsam molestias consectetur sunt eum. Omnis laborum facere voluptas. Saepe est porro blanditiis ut corrupti hic.', 3, 2, '2021-10-06 19:06:31', '2021-10-06 19:06:31'),
-(22, 'Dưa hấu có mấy hột ?', '2 hột', '4 hột', '6 hột', 'Vô số', 4, 2, '2021-10-06 19:33:08', '2021-10-06 19:33:29');
+(22, 'Dưa hấu có mấy hột ?', '2 hột', '4 hột', '6 hột', 'Vô số', 4, 2, '2021-10-06 19:33:08', '2021-10-06 19:33:29'),
+(23, 'Con gà có mấy chân ?', '1 chân', '2 chân', '3 chân', '4 chân', 2, 4, '2021-10-10 19:39:08', '2021-10-10 19:41:18');
 
 -- --------------------------------------------------------
 
@@ -216,9 +219,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'super_admin', 'web', NULL, NULL),
 (2, 'manager', 'web', NULL, NULL),
-(15, 'user', 'web', '2021-10-05 21:06:23', '2021-10-05 21:06:23');
+(15, 'user', 'web', '2021-10-05 21:06:23', '2021-10-05 21:06:23'),
+(18, 'super_admin', 'web', '2021-10-10 19:52:24', '2021-10-10 19:52:24');
 
 -- --------------------------------------------------------
 
@@ -236,14 +239,18 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(1, 1),
-(3, 1),
-(4, 1),
+(1, 2),
 (2, 2),
-(1, 15),
-(2, 15),
-(3, 15),
-(4, 15);
+(3, 2),
+(4, 2),
+(13, 15),
+(1, 18),
+(2, 18),
+(3, 18),
+(4, 18),
+(10, 18),
+(11, 18),
+(12, 18);
 
 -- --------------------------------------------------------
 
@@ -267,10 +274,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Hoàng Anh', 'hoang@gmail.com', NULL, '$2y$10$NcGtdU/uWJLPrExywwIHJOJi0oCKWgXHjKPyrRwQYX9vQf6IeuiSW', 'MgtNlqubgZephchK0RBksajirWk6yHWfpH0cmIdG2re8Fge7QS4WBmM5mDpi', NULL, '2021-10-07 00:15:29'),
-(8, 'Khánh Linh', 'ok@gmail.com', NULL, '$2y$10$2srV8mXE7zAsbyM17GOo2.wIoNtW8ZzY7dJ/5FDWe7JUdlYlxCMSq', 'JHUmA3ruKrcPwiHAnFmKIYlDt5fQKx7V4Z04xBwS5lznPN4IHYImH2uc9cjC', '2021-10-05 02:45:47', '2021-10-07 00:48:03'),
-(10, 'Nam', 'nam@gmail.com', NULL, '$2y$10$ugGX/65kwL/1dVn3LlxFiumhsjEVBIdHYeRfwbGThHZjrJTfnbmW2', NULL, '2021-10-07 01:34:14', '2021-10-07 01:34:14'),
-(11, 'John', 'john@gmail.com', NULL, '$2y$10$o0U4cBkRWfEPKkjq.Ze46uKy7xa.piTab3sWQ8Pve8kHxx1lBGbUm', 'AQU1jBSqbpv724ARZ5ZBnkM53rHLbLHy7y15M4hK6YZaP11ASb3SLkorybjt', '2021-10-07 18:54:25', '2021-10-07 18:54:25');
+(1, 'Hoàng Anh', 'hoang@gmail.com', NULL, '$2y$10$NcGtdU/uWJLPrExywwIHJOJi0oCKWgXHjKPyrRwQYX9vQf6IeuiSW', 'bm8Cs1ZTPPvRtFPlyVNP7LgQdJiMhJKwzDlkLEZwIjX0tUO7L7IAkAqe1Kcl', NULL, '2021-10-07 00:15:29'),
+(8, 'Khánh Linh', 'ok@gmail.com', NULL, '$2y$10$2srV8mXE7zAsbyM17GOo2.wIoNtW8ZzY7dJ/5FDWe7JUdlYlxCMSq', 'qOtnsULJ3eOsRaUohb48coF25h6JhbQzpRli2rBK8MCQsUd2N0FTTzUpN3iU', '2021-10-05 02:45:47', '2021-10-07 00:48:03'),
+(10, 'Nam', 'nam@gmail.com', NULL, '$2y$10$ugGX/65kwL/1dVn3LlxFiumhsjEVBIdHYeRfwbGThHZjrJTfnbmW2', 'ASz44SGp8Jmzc13jHepYVe0wYMcx3LhTOfeuKQMFDaB1aMkvEbNZ1IYTEAbA', '2021-10-07 01:34:14', '2021-10-07 01:34:14'),
+(11, 'John', 'john@gmail.com', NULL, '$2y$10$o0U4cBkRWfEPKkjq.Ze46uKy7xa.piTab3sWQ8Pve8kHxx1lBGbUm', 'i2zIW37T1Fgk64GUlnugqVcPni3Lw5IU9YBf0PxPmw43y8ClcfauIMVIBCUa', '2021-10-07 18:54:25', '2021-10-07 18:54:25');
 
 --
 -- Indexes for dumped tables
@@ -365,13 +372,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -383,13 +390,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
