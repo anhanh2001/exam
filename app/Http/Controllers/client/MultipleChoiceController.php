@@ -15,7 +15,7 @@ class MultipleChoiceController extends Controller
         $model = Question::inRandomOrder()->limit($id)->get();
         //lấy date hết hạn làm bài
         if ($id == 10) {
-            $timeEnd = Carbon::now()->addMinutes(1)->format('Y-m-d H:i');
+            $timeEnd = Carbon::now()->addMinutes(6)->format('Y-m-d H:i');
         } else {
             $timeEnd = Carbon::now()->addMinutes(11)->format('Y-m-d H:i');
         }
@@ -25,7 +25,7 @@ class MultipleChoiceController extends Controller
     {
         //check date hiện tại có lớn hơn thời hạn làm bài hay k
         if (Carbon::now()->gt($request->timeEnd) == true) {
-            return back('welcome')->withErrors(['msg'=>'Bạn đã vi phạm quy chế thi và không được công nhận kết quả !']);
+            return redirect()->route('dashboard')->withErrors(['msg'=>'Bạn đã vi phạm quy chế thi và không được công nhận kết quả !']);
         } else {
             $totalPoint = $request->totalPoint;
             $diemThi = 0;
