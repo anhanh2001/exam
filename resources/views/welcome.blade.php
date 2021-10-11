@@ -49,6 +49,11 @@
                                 <p class="mb-3">
                                     Chào mừng bạn quay trở lại !
                                 </p>
+                                @error('msg')
+                                <p class="text-danger">
+                                    {{$message}}
+                                </p>
+                                @enderror
                             </div>
                             <!-- delivery panel -->
                         </div>

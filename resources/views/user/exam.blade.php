@@ -71,6 +71,7 @@
                             </div>
                             @endforeach
                             <input type="hidden" name="totalPoint" value="{{$totalPoint}}">
+                            <input type="hidden" name="timeEnd" value="{{$timeEnd}}">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
