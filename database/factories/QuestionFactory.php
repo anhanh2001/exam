@@ -29,6 +29,7 @@ class QuestionFactory extends Factory
             'answer_3' => $this->faker->text(),
             'answer_4' => $this->faker->text(),
             'correct_answer' => $this->faker->numberBetween(1,4),
+            'point_question' => 2,
         ];
     }
 }
