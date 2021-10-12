@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //client
-Route::get('/',function(){
+Route::middleware('auth')->get('/dashboard',function(){
     return view('welcome');
 })->name('dashboard');
-Route::get('/login',[LoginController::class,'login'])->name('login');
-Route::post('/login',[LoginController::class,'postLogin']);
+Route::get('/',[LoginController::class,'login'])->name('login');
+Route::post('/',[LoginController::class,'postLogin']);
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::get('/signup',[LoginController::class,'signin'])->name('signin');
 Route::post('/signup',[LoginController::class,'postSignin']);

@@ -86,9 +86,10 @@
                                     <div class="mb-1">
                                         <label class="form-label" for="basic-addon-name">Tên Vai Trò</label>
 
-                                        <input type="text" name="name" value="{{$model->name}}" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" name="name" value="{{old('name',$model->name)}}" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('name')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <h4 class="mt-2 pt-50">Quyền</h4>
@@ -101,14 +102,12 @@
                                                         <td>
                                                             <div class="d-flex">
                                                                 <div class="form-check me-3 me-lg-5">
-                                                                    <input class="form-check-input"
-                                                                    @php
-                                                                        for($i=0;$i<count($model->hasPermission);$i++){
-                                                                            if($model->hasPermission[$i]['id']==$c->id)
-                                                                            echo "checked";
-                                                                        }
+                                                                    <input class="form-check-input" @php for($i=0;$i<count($model->hasPermission);$i++){
+                                                                    if($model->hasPermission[$i]['id']==$c->id)
+                                                                    echo "checked";
+                                                                    }
                                                                     @endphp
-                                                                    
+
                                                                     value="{{$c->id}}" name="permission[]" type="checkbox" id="userManagementRead" />
                                                                 </div>
                                                             </div>
@@ -117,6 +116,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            @error('permission')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
                                         </div>
 
                                     </div>

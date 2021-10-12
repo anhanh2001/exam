@@ -86,21 +86,24 @@
                                     <div class="mb-1">
                                         <label class="form-label" for="basic-addon-name">Name</label>
 
-                                        <input type="text" name="name" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('name')}}" name="name" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('name')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="basic-default-email1">Email</label>
-                                        <input type="email" name="email" id="basic-default-email1" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe@email.com" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter a valid email</div>
+                                        <input type="email" value="{{old('email')}}" name="email" id="basic-default-email1" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe@email.com" required />
+                                        @error('email')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="basic-default-password1">Password</label>
-                                        <input type="password" name="password" id="basic-default-password1" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your password.</div>
+                                        <input type="password" value="{{old('password')}}" name="password" id="basic-default-password1" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required />
+                                        @error('password')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <h4 class="mt-2 pt-50">Vai Trò</h4>
@@ -139,8 +142,11 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                            @error('role')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
                                         </div>
-                                    
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Add User</button>
                                 </form>
                             </div>

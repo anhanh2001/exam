@@ -22,6 +22,10 @@ class RoleController extends Controller
         return view('admin.page.role.add',compact('model'));
     }
     public function postAdd(Request $request){
+        $request->validate([
+            'name' => ['required','unique:roles,name'],
+            'permission' => 'required',
+        ]);
         //role mới
         $role = ModelsRole::create(['name' => $request->name,'guard_name'=> 'web']);
         $role->syncPermissions($request->permission);
@@ -34,6 +38,10 @@ class RoleController extends Controller
         return view('admin.page.role.edit',compact('model','per'));
     }
     public function postEdit(Request $request,$id){
+        $request->validate([
+            'name' => ['required','unique:roles,name,'.$id],
+            'permission' => 'required',
+        ]);
         RoleHasPermission::where('role_id',$id)->delete();
         $role = ModelsRole::findById($id);
         $role->syncPermissions($request->permission);

@@ -17,6 +17,15 @@ class QuestionController extends Controller
         return view('admin.page.question.add');
     }
     public function postAdd(Request $request){
+        $request->validate([
+            'question' => ['required','unique:questions,question'],
+            'answer_1' => 'required',
+            'answer_2' => 'required',
+            'answer_3' => 'required',
+            'answer_4' => 'required',
+            'correct_answer' => 'required',
+            'point_question' => 'required|numeric|min:1',
+        ]);
         $model = new Question();
         $model->fill($request->all());
         $model->save();
@@ -27,6 +36,15 @@ class QuestionController extends Controller
         return view('admin.page.question.edit',compact('model'));
     }
     public function postEdit(Request $request,$id){
+        $request->validate([
+            'question' => ['required','unique:questions,question,'.$id],
+            'answer_1' => 'required',
+            'answer_2' => 'required',
+            'answer_3' => 'required',
+            'answer_4' => 'required',
+            'correct_answer' => 'required',
+            'point_question' => 'required|numeric|min:1',
+        ]);
         $model = Question::find($id);
         $model->fill($request->all());
         $model->save();

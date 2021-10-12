@@ -86,37 +86,42 @@
                                     <div class="mb-1">
                                         <label class="form-label" >Câu Hỏi</label>
 
-                                        <input type="text" value="{{$model->question}}" name="question" id="basic-addon-name" class="form-control" placeholder="Câu Hỏi" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('question',$model->question)}}" name="question" id="basic-addon-name" class="form-control" placeholder="Câu Hỏi" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('question')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" >Đáp Án 1</label>
 
-                                        <input type="text" value="{{$model->answer_1}}" name="answer_1" id="basic-addon-name" class="form-control" placeholder="Đáp Án 1" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('answer_1',$model->answer_1)}}" name="answer_1" id="basic-addon-name" class="form-control" placeholder="Đáp Án 1" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('answer_1')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" >Đáp án 2</label>
 
-                                        <input type="text" value="{{$model->answer_2}}" name="answer_2" id="basic-addon-name" class="form-control" placeholder="Đáp Án 2" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('answer_2',$model->answer_2)}}" name="answer_2" id="basic-addon-name" class="form-control" placeholder="Đáp Án 2" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('answer_2')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" >Đáp án 3</label>
 
-                                        <input type="text" value="{{$model->answer_3}}" name="answer_3" id="basic-addon-name" class="form-control" placeholder="Đáp Án 3" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('answer_3',$model->answer_3)}}" name="answer_3" id="basic-addon-name" class="form-control" placeholder="Đáp Án 3" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('answer_3')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" >Đáp Án 4</label>
 
-                                        <input type="text" value="{{$model->answer_4}}" name="answer_4" id="basic-addon-name" class="form-control" placeholder="Đáp Án 4" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('answer_4',$model->answer_4)}}" name="answer_4" id="basic-addon-name" class="form-control" placeholder="Đáp Án 4" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('answer_4')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <h4 class="mt-2 pt-50">Đáp Án Đúng</h4>
@@ -166,12 +171,17 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        @error('correct_answer')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
 
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" >Điểm Câu Hỏi</label>
-
-                                        <input type="text" value="{{$model->point_question}}" name="point_question" id="basic-addon-name" class="form-control" placeholder="2 điểm" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        <input type="text" value="{{old('point_question',$model->point_question)}}" name="point_question" id="basic-addon-name" class="form-control" placeholder="2 điểm" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('point_question')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Sửa Câu Hỏi</button>

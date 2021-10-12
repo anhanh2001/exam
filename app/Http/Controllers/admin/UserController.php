@@ -10,14 +10,23 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $model = User::all();
-        return view('admin.page.user.index',compact('model'));
+        return view('admin.page.user.index', compact('model'));
     }
-    public function add(){
+    public function add()
+    {
         return view('admin.page.user.add');
     }
-    public function postAdd(Request $request){
+    public function postAdd(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required'],
+            'role' => 'required',
+        ]);
         $model = new User();
         $model->fill($request->all());
         $model['password'] = Hash::make($request->password);
@@ -25,18 +34,28 @@ class UserController extends Controller
         $model->assignRole($request->role);
         return redirect()->route('user.list');
     }
-    public function edit($id){
+    public function edit($id)
+    {
         $model = User::find($id);
-        return view('admin.page.user.edit',compact('model'));
+        $model['role'] = $model->getRoleNames()->first();
+        return view('admin.page.user.edit', compact('model'));
     }
-    public function postEdit(Request $request,$id){
+    public function postEdit(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:users,email,'.$id],
+            'password' => ['required'],
+            'role' => 'required',
+        ]);
         $model = User::find($id);
         $model->fill($request->all());
         $model['password'] = Hash::make($request->password);
         $model->save();
         return redirect()->route('user.list');
     }
-    public function delete($id){
+    public function delete($id)
+    {
         User::destroy($id);
         return redirect()->route('user.list');
     }

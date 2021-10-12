@@ -86,9 +86,10 @@
                                     <div class="mb-1">
                                         <label class="form-label" for="basic-addon-name">Tên Quyền</label>
 
-                                        <input type="text" value="{{$model->name}}" name="name" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+                                        <input type="text" value="{{old('name',$model->name)}}" name="name" id="basic-addon-name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        @error('name')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Sửa Quyền</button>
