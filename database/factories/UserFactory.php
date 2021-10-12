@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserFactory extends Factory
 {
@@ -22,6 +24,22 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $role1 = Role::create(['name' => 'super_admin']);
+        $role2 = Role::create(['name' => 'manager']);
+        $role3 = Role::create(['name' => 'user']);
+        $permission = Permission::create(
+            ['name' => 'Thêm câu hỏi'],
+            ['name' => 'Sửa câu hỏi'],
+            ['name'=> 'Xóa câu hỏi'],
+            ['name' => 'Tạo bài thi'],
+            ['name' => 'Thêm tài khoản'],
+            ['name' => 'Sửa tài khoản'],
+            ['name' => 'Xóa tài khoản'],
+            ['name' => 'Làm bài thi'],
+        );
+        $role1->syncPermissions($permission);
+        $role2->syncPermissions('Thêm câu hỏi','Sửa câu hỏi','Xóa câu hỏi','Tạo bài thi');
+        $role3->syncPermissions('Làm bài thi');
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
