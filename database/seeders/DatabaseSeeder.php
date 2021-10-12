@@ -33,13 +33,19 @@ class DatabaseSeeder extends Seeder
         $role2->givePermissionTo('Thêm câu hỏi','Sửa câu hỏi','Xóa câu hỏi','Tạo bài thi');
         $role3->givePermissionTo('Làm bài thi');
          //chạy xong comment lại tránh chạy lần 2 => có lỗi }
+
+
         \App\Models\User::factory(10)->create();
+
+
          //chạy xong comment lại tránh chạy lần 2 => có lỗi {
         $user =User::all();
         foreach($user as $c){
             $c->assignRole('super_admin');
         }
          //chạy xong comment lại tránh chạy lần 2 => có lỗi }
+
+         
         Question::factory(20)->create();
     }
 }
