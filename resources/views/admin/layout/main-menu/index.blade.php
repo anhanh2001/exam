@@ -87,10 +87,32 @@
                   <li class=" navigation-header"><span data-i18n="Dịch vụ">Tài Liệu</span><i
                               data-feather="more-horizontal"></i>
                   </li>
-                  <li class=" nav-item {{ request()->routeIs('question*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('question.list')}}"><i
+                  <!-- <li class=" nav-item {{ request()->routeIs('question*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('question.list')}}"><i
                                     data-feather='shopping-bag'></i><span class="menu-title text-truncate"
                                     data-i18n="Dịch vụ lẻ">Danh Sách Câu Hỏi</span></a>
+                                    
 
+                  </li> -->
+                  <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='check-circle'></i><span
+                                    class="menu-title text-truncate" data-i18n="Roles &amp; Permission">Câu Hỏi &amp;
+                                    Xuất File</span></a>
+                        <ul class="menu-content">
+                              <li class="{{ request()->routeIs('question*') ? 'active' : '' }}"><a
+                                          class="d-flex align-items-center" href="{{route('question.list')}}"><i
+                                                data-feather="circle"></i><span class="menu-item text-truncate"
+                                                data-i18n="Roles">Danh sách câu hỏi</span></a>
+                              </li>
+                              <li class="{{ request()->routeIs('file-export-excel*') ? 'active' : '' }}"><a
+                                          class="d-flex align-items-center" href="{{route('file-export-excel')}}"><i
+                                                data-feather="circle"></i><span class="menu-item text-truncate"
+                                                data-i18n="Permission">Xuất file (Excel)</span></a>
+                              </li>
+                              <li class="{{ request()->routeIs('file-export-csv*') ? 'active' : '' }}"><a
+                                          class="d-flex align-items-center" href="{{route('file-export-csv')}}"><i
+                                                data-feather="circle"></i><span class="menu-item text-truncate"
+                                                data-i18n="Permission">Xuất file (Csv)</span></a>
+                              </li>
+                        </ul>
                   </li>
                   @endrole
                   @role('user')

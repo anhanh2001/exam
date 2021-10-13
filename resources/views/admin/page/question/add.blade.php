@@ -79,6 +79,7 @@
                         <div class="card ">
                             <div class="card-header">
                                 <h4 class="card-title">Thêm Câu Hỏi</h4>
+                                <a  class="btn btn-primary " href="{{route('file-import-export')}}">Thêm Bộ Câu Hỏi</a>
                             </div>
                             <div class="card-body">
                                 <form class="needs-validation" action="{{route('question.add')}}" method="POST" novalidate>

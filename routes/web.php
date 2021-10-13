@@ -21,18 +21,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //client
-Route::middleware('auth')->get('/dashboard',function(){
+Route::middleware('auth')->get('/dashboard', function () {
     return view('welcome');
 })->name('dashboard');
-Route::get('/',[LoginController::class,'login'])->name('login');
-Route::post('/',[LoginController::class,'postLogin']);
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-Route::get('/signup',[LoginController::class,'signin'])->name('signin');
-Route::post('/signup',[LoginController::class,'postSignin']);
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/', [LoginController::class, 'postLogin']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/signup', [LoginController::class, 'signin'])->name('signin');
+Route::post('/signup', [LoginController::class, 'postSignin']);
 
 //user
-Route::get('/multiple-choice/{id}',[MultipleChoiceController::class,'question'])->name('multi');
-Route::post('/multiple-choice/{id}',[MultipleChoiceController::class,'point']);
+Route::get('/multiple-choice/{id}', [MultipleChoiceController::class, 'question'])->name('multi');
+Route::post('/multiple-choice/{id}', [MultipleChoiceController::class, 'point']);
 
 
 
@@ -72,5 +72,9 @@ Route::prefix('admin')->middleware('auth')->middleware('role:super_admin|manager
         Route::get('/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
         Route::post('/edit/{id}', [QuestionController::class, 'postEdit']);
         Route::get('/delete/{id}', [QuestionController::class, 'delete'])->name('question.remove');
+        Route::get('file-import-export', [QuestionController::class, 'fileImportExport'])->name('file-import-export');
+        Route::post('file-import', [QuestionController::class, 'fileImport'])->name('file-import');
+        Route::get('file-export-excel', [QuestionController::class, 'fileExportExcel'])->name('file-export-excel');
+        Route::get('file-export-csv', [QuestionController::class, 'fileExportCsv'])->name('file-export-csv');
     });
 });
