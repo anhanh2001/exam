@@ -85,8 +85,11 @@
                                     @csrf
                                     <div class="mb-1">
                                         <label class="form-label">Câu Hỏi</label>
-                                        <input type="file" name="file" id="basic-addon-name" class="form-control" aria-label="Name" aria-describedby="basic-addon-name" required />
+                                        <input type="file" name="file" id="docpicker" class="form-control" aria-label="Name" aria-describedby="basic-addon-name" required />
                                         @error('file')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                        @error('format')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
@@ -94,6 +97,11 @@
                                     <button type="submit" class="btn btn-primary">Thêm Bộ Câu Hỏi</button>
                                 </form>
                             </div>
+                            <table class="user-list-table table">  
+                                <tbody id="viewFile">
+
+                                </tbody>
+                            </table>
                             @if(session()->has('failures'))
                             <table class="user-list-table table" id="">
                                 <thead class="table-light">
@@ -142,4 +150,54 @@
 
 @endsection
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+<script>
+    var file = document.getElementById('docpicker')
+    var viewer = document.getElementById('dataviewer')
+    file.addEventListener('change', importFile);
+
+    function importFile(evt) {
+        var f = evt.target.files[0];
+
+        if (f) {
+            var r = new FileReader();
+            r.onload = e => {
+                var contents = processExcel(e.target.result);
+                var obj = JSON.parse(contents);
+                console.log(obj);
+                // review file vẫn đang lỗi. cần sửa
+                // obj.Worksheet.map(function(x) {
+                //     document.getElementById('viewFile').insertAdjacentHTML('beforeend','<tr></tr>' );
+                //     x.map(function(y) {
+                //         document.getElementById('viewFile').insertAdjacentHTML('afterend','<td>'+y+'</td>');
+                //     })
+                // })
+            }
+            r.readAsBinaryString(f);
+        } else {
+            console.log("Failed to load file");
+        }
+    }
+
+    function processExcel(data) {
+        var workbook = XLSX.read(data, {
+            type: 'binary'
+        });
+
+        var firstSheet = workbook.SheetNames[0];
+        var data = to_json(workbook);
+        return data
+    };
+
+    function to_json(workbook) {
+        var result = {};
+        workbook.SheetNames.forEach(function(sheetName) {
+            var roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
+                header: 1
+            });
+            if (roa.length) result[sheetName] = roa;
+        });
+        return JSON.stringify(result, 2, 2);
+    };
+</script>
 @endsection

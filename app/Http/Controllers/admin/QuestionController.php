@@ -80,6 +80,18 @@ class QuestionController extends Controller
             'file' => ['required','mimes:csv,xlsx,ods,txt'],
         ]);
         $file = $request->file('file');
+        $data = Excel::toArray('', $file, null)[0];
+        if(
+            in_array('question',$data[0])==false||
+            in_array('answer_1',$data[0])==false||
+            in_array('answer_2',$data[0])==false||
+            in_array('answer_3',$data[0])==false||
+            in_array('answer_4',$data[0])==false||
+            in_array('correct_answer',$data[0])==false||
+            in_array('point_question',$data[0])==false
+        ){
+            return back()->withErrors(['format'=>'Định dạng các cột không phù hợp']);
+        }
         $import = new QuestionImport();
         $import->import($file);
         if($import->failures()->isNotEmpty()){

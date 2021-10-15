@@ -3,15 +3,17 @@
 namespace App\Imports;
 
 use App\Models\Question;
-use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class QuestionImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure
+class QuestionImport implements ToModel,WithChunkReading,WithBatchInserts ,SkipsEmptyRows, WithHeadingRow, SkipsOnFailure, WithValidation
 {
     use SkipsFailures, Importable;
     /**
@@ -21,7 +23,6 @@ class QuestionImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
      */
     public function model(array $row)
     {
-        
         return new Question([
             'question' => $row['question'],
             'answer_1' => $row['answer_1'],
@@ -43,5 +44,14 @@ class QuestionImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'correct_answer' => ['required', 'numeric', 'min:1'],
             'point_question' => ['required', 'numeric', 'min:1'],
         ];
+    }
+    public function batchSize(): int
+    {
+        return 1000;
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000;
     }
 }
