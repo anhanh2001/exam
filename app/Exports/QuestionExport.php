@@ -6,8 +6,9 @@ use App\Models\Question;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class QuestionExport implements FromCollection, WithHeadings ,WithMapping
+class QuestionExport implements FromCollection, WithHeadings ,WithMapping ,WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -41,5 +42,9 @@ class QuestionExport implements FromCollection, WithHeadings ,WithMapping
            'correct_answer',
            'point_question',
         ];
+    }
+    public function title(): string
+    {
+        return 'Sheet1';
     }
 }

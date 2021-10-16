@@ -163,7 +163,8 @@
             r.onload = e => {
                 var contents = processExcel(e.target.result);
                 var obj = JSON.parse(contents);
-                var objj = obj.Worksheet;
+                console.log(obj);
+                var objj = obj.Sheet1;
                 //display excel file
                 var table_output = '<h4 class="card-tittle">Dữ liệu sẽ thêm :</h4><table class="table table-stripped table-bordered">'
                 for (var row = 0; row < objj.length; row++) {
