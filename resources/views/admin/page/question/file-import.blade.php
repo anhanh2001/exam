@@ -97,39 +97,38 @@
                                     <button type="submit" class="btn btn-primary">Thêm Bộ Câu Hỏi</button>
                                 </form>
                             </div>
-                            <table class="user-list-table table">  
-                                <tbody id="viewFile">
-
-                                </tbody>
-                            </table>
+                            <div class="card-body" id="excel-data"></div>
                             @if(session()->has('failures'))
-                            <table class="user-list-table table" id="">
-                                <thead class="table-light">
-                                    <tr>
+                            <div class="card-body">
+                                <h4 class="card-title">Lỗi khi thêm</h4>
+                                <table class="user-list-table table" id="">
+                                    <thead class="table-light">
+                                        <tr>
 
-                                        <th>Hàng</th>
-                                        <th>Thuộc Tính</th>
-                                        <th>Lỗi</th>
-                                        <th>Giá Trị</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach(session()->get('failures') as $validation)
-                                    <tr>
-                                        <td class="text-danger">{{$validation->row()}}</td>
-                                        <td class="text-danger">{{$validation->attribute()}}</td>
-                                        <td class="text-danger">
-                                            <ul>
-                                                @foreach($validation->errors() as $e)
-                                                <li class="text-danger">{{$e}}</li>
-                                                @endforeach
-                                            </ul>
-                                        </td>
-                                        <td class="text-danger">{{$validation->values()[$validation->attribute()]}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            <th>Hàng</th>
+                                            <th>Thuộc Tính</th>
+                                            <th>Lỗi</th>
+                                            <th>Giá Trị</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(session()->get('failures') as $validation)
+                                        <tr>
+                                            <td class="text-danger">{{$validation->row()}}</td>
+                                            <td class="text-danger">{{$validation->attribute()}}</td>
+                                            <td class="text-danger">
+                                                <ul>
+                                                    @foreach($validation->errors() as $e)
+                                                    <li class="text-danger">{{$e}}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td class="text-danger">{{$validation->values()[$validation->attribute()]}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -164,14 +163,17 @@
             r.onload = e => {
                 var contents = processExcel(e.target.result);
                 var obj = JSON.parse(contents);
-                console.log(obj);
-                // review file vẫn đang lỗi. cần sửa
-                // obj.Worksheet.map(function(x) {
-                //     document.getElementById('viewFile').insertAdjacentHTML('beforeend','<tr></tr>' );
-                //     x.map(function(y) {
-                //         document.getElementById('viewFile').insertAdjacentHTML('afterend','<td>'+y+'</td>');
-                //     })
-                // })
+                var objj = obj.Worksheet;
+                //display excel file
+                var table_output = '<h4 class="card-tittle">Dữ liệu sẽ thêm :</h4><table class="table table-stripped table-bordered">'
+                for (var row = 0; row < objj.length; row++) {
+                    table_output += '<tr>';
+                    for (var cell = 0; cell < objj[row].length; cell++) {
+                        table_output += '<td>' + objj[row][cell] + '</td>';
+                    }
+                }
+                table_output += '</table>';
+                document.getElementById('excel-data').innerHTML = table_output;
             }
             r.readAsBinaryString(f);
         } else {
