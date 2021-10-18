@@ -97,7 +97,6 @@
                                     <button type="submit" class="btn btn-primary">Thêm Bộ Câu Hỏi</button>
                                 </form>
                             </div>
-                            <div class="card-body" id="excel-data"></div>
                             @if(session()->has('failures'))
                             <div class="card-body">
                                 <h4 class="card-title">Lỗi khi thêm</h4>
@@ -130,6 +129,7 @@
                                 </table>
                             </div>
                             @endif
+                            <div class="card-body" id="excel-data"></div>
                         </div>
                     </div>
                     <!-- Modal to add new user starts-->
@@ -152,7 +152,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
 <script>
     var file = document.getElementById('docpicker')
-    var viewer = document.getElementById('dataviewer')
     file.addEventListener('change', importFile);
 
     function importFile(evt) {
