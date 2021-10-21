@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\client\MultipleChoiceController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResultController;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::post('/signup', [LoginController::class, 'postSignin']);
 //user
 Route::get('/multiple-choice/{id}', [MultipleChoiceController::class, 'question'])->name('multi');
 Route::post('/multiple-choice/{id}', [MultipleChoiceController::class, 'point']);
+Route::get('/history', [ResultController::class, 'index'])->name('history.list');
+Route::get('/history-detail/{id}', [ResultController::class, 'detail'])->name('history.detail');
 
 
 

@@ -136,6 +136,15 @@
                         </ul>
                   </li>
                   @endrole
+                  @role('user')
+                  <li class="navigation-header"><span data-i18n="Tài khoản">Lịch Sử Làm Bài</span><i
+                              data-feather="more-horizontal"></i>
+                  </li>
+                  <li class="nav-item {{ request()->routeIs('history*') ? 'active' : '' }}"><a class="d-flex align-items-center"
+                              href="{{route('history.list')}}"><i data-feather='key'></i></i><span
+                                    class="menu-title text-truncate" data-i18n="Key">Lịch Sử Làm Bài</span></a>
+                  </li>
+                  @endrole
 
 
                   

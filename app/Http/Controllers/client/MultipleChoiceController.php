@@ -4,8 +4,11 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Question;
+use App\Models\Result;
+use App\Models\ResultQuestion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MultipleChoiceController extends Controller
 {
@@ -42,6 +45,20 @@ class MultipleChoiceController extends Controller
             }
             // tính điểm thi và lấy ra chữ số thập phân đầu tiên
             $result =  round(($diemThi / $totalPoint) * 100 / 10, 1);
+            //lưu lại kết quả thi
+            $saveResult = new Result();
+            $saveResult['user_id'] = Auth::user()->id;
+            $saveResult['point'] = $result;
+            $saveResult->save();
+            if ($request->question != null) {
+                foreach ($request->question as $i => $b) {
+                    $saveResultQuestion = new ResultQuestion();
+                    $saveResultQuestion['result_id'] = $saveResult['id'];
+                    $saveResultQuestion['question_id'] = $i;
+                    $saveResultQuestion['choice'] = $b;
+                    $saveResultQuestion->save();
+                }
+            }
             return view('user.result', compact('result', 'question'));
         }
     }
