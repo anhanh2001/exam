@@ -12,7 +12,7 @@ class ResultController extends Controller
 {
     //
     public function index(){
-        $model = Result::where('user_id',Auth::user()->id)->get();
+        $model = Result::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
         return view('user.history',compact('model'));
     }
     public function detail($id){
