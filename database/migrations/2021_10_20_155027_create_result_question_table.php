@@ -13,12 +13,12 @@ class CreateResultQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('result_question', function (Blueprint $table) {
+        Schema::create('results_question', function (Blueprint $table) {
             $table->unsignedBigInteger('result_id');
             $table->unsignedBigInteger('question_id');
             $table->integer('choice');
         });
-        Schema::table('result_question', function(Blueprint $table) {
+        Schema::table('results_question', function(Blueprint $table) {
             $table->foreign('result_id')->references('id')->on('results');
             $table->foreign('question_id')->references('id')->on('questions');
         });
