@@ -125,13 +125,18 @@
                               <li class="{{ request()->is('multiple-choice/10') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('multi',10)}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
-                                                data-i18n="Roles">Trắc Nghiệm 10 câu</span></a>
+                                                data-i18n="Roles">Trắc Nghiệm 10 Câu</span></a>
                               </li>
                               <!-- phần css khi chọn vào bài thi vẫn đang hỏng. cần sửa -->
                               <li class="{{ request()->is('multiple-choice/20') ? 'active' : '' }}"><a
                                           class="d-flex align-items-center" href="{{route('multi',20)}}"><i
                                                 data-feather="circle"></i><span class="menu-item text-truncate"
-                                                data-i18n="Permission">Trắc Nghiệm 20 câu</span></a>
+                                                data-i18n="Permission">Trắc Nghiệm 20 Câu</span></a>
+                              </li>
+                              <li class="{{ request()->routeIs('multi-random*') ? 'active' : '' }}"><a
+                                          class="d-flex align-items-center" href="{{route('multi-random')}}"><i
+                                                data-feather="circle"></i><span class="menu-item text-truncate"
+                                                data-i18n="Permission">Tùy Chọn Câu Hỏi</span></a>
                               </li>
                         </ul>
                   </li>

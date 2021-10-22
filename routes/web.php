@@ -32,8 +32,10 @@ Route::get('/signup', [LoginController::class, 'signin'])->name('signin');
 Route::post('/signup', [LoginController::class, 'postSignin']);
 
 //user
-Route::get('/multiple-choice/{id}', [MultipleChoiceController::class, 'question'])->name('multi');
-Route::post('/multiple-choice/{id}', [MultipleChoiceController::class, 'point']);
+Route::get('/multiple-choice/{id?}', [MultipleChoiceController::class, 'question'])->name('multi');
+Route::post('/multiple-choice/{id?}', [MultipleChoiceController::class, 'point']);
+Route::get('/multiple-choice-random', [MultipleChoiceController::class, 'question_random'])->name('multi-random');
+Route::post('/multiple-choice-random', [MultipleChoiceController::class, 'question_random_post']);
 Route::get('/history', [ResultController::class, 'index'])->name('history.list');
 Route::get('/history-detail/{id}', [ResultController::class, 'detail'])->name('history.detail');
 

@@ -36,7 +36,7 @@
             <!-- Basic Radio Button start -->
             <section id="basic-radio">
                 <div class="row">
-                    <form action="{{route('multi',$id)}}" method="post">
+                    <form action="{{route('multi')}}" method="post">
                         @csrf
                         <div class="col-12">
                             @php $dem =0;$totalPoint=0;@endphp
@@ -72,6 +72,7 @@
                             @endforeach
                             <input type="hidden" name="totalPoint" value="{{$totalPoint}}">
                             <input type="hidden" name="timeEnd" value="{{$timeEnd}}">
+                            <input type="hidden" id="total-time" name="time" value="{{$time}}">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -108,13 +109,8 @@
     }
 
     jQuery(function($) {
-        //check địa chỉ trên url nếu id là 10 => thời gian 5p , 20 => thời gian 10p
-        var totalQuestion = null;
-        if (window.location.pathname === '/multiple-choice/10') {
-            totalQuestion = 5*60;
-        } else {
-            totalQuestion = 10*60;
-        }
+        // Tính thời gian bài thi
+        var totalQuestion = document.getElementById('total-time').value*60;
         var display = $('#clock');
         startTimer(totalQuestion, display);
     });

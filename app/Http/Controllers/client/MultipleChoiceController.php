@@ -19,10 +19,26 @@ class MultipleChoiceController extends Controller
         //lấy date hết hạn làm bài
         if ($id == 10) {
             $timeEnd = Carbon::now()->addMinutes(6)->format('Y-m-d H:i');
+            $time = 5;//biến time dùng cho bộ đếm js khi làm bài
         } else {
             $timeEnd = Carbon::now()->addMinutes(11)->format('Y-m-d H:i');
+            $time = 10;
         }
-        return view('user.exam', compact('model', 'id', 'timeEnd'));
+        return view('user.exam', compact('model','timeEnd','time'));
+    }
+    public function question_random(){
+        $model = Question::all()->count();
+        return view('user.random-question',compact('model'));
+    }
+    public function question_random_post(Request $request){
+        $model = Question::inRandomOrder()->limit($request->number)->get();
+        $time = $model->count();
+        $request->validate([
+            'number' => ['required','numeric','min:1','max:'.$time],
+        ]);
+        $time = ceil($time/10)*5;// cứ 10 câu hỏi quy ra 5p vì thế lấy tổng chia cho 10 và làm tròn lên
+        $timeEnd = Carbon::now()->addMinutes((ceil($time/10)*5)+1)->format('Y-m-d H:i');
+        return view('user.exam', compact('model','timeEnd','time'));
     }
     public function point(Request $request)
     {
