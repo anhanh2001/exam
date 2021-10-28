@@ -44,7 +44,7 @@ class MultipleChoiceController extends Controller
     {
         //check date hiện tại có lớn hơn thời hạn làm bài hay k
         if (Carbon::now()->gt($request->timeEnd) == true) {
-            return redirect()->route('dashboard')->withErrors(['msg'=>'Bạn đã vi phạm quy chế thi và không được công nhận kết quả !']);
+            return redirect()->route('dashboard')->withErrors(['msg'=>'Đã quá thời gian làm bài, kết quả sẽ không được công nhận !']);
         } else {
             $totalPoint = $request->totalPoint;
             $diemThi = 0;

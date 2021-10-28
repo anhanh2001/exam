@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\QuestionController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\client\GuestTestController;
 use App\Http\Controllers\client\MultipleChoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultController;
@@ -39,7 +40,9 @@ Route::post('/multiple-choice-random', [MultipleChoiceController::class, 'questi
 Route::get('/history', [ResultController::class, 'index'])->name('history.list');
 Route::get('/history-detail/{id}', [ResultController::class, 'detail'])->name('history.detail');
 
-
+//guest
+Route::get('/link',[GuestTestController::class,'index'])->name('link');
+Route::post('/link',[GuestTestController::class,'point']);
 
 
 //admin
