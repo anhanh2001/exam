@@ -27,7 +27,8 @@
                 </div>
             </div> -->
         </div>
-        <div class="content-body" hidden>
+        @isset($model)
+        <div class="content-body">
             <!-- Basic Radio Button start -->
             <section id="basic-radio">
                 <div class="row">
@@ -76,6 +77,7 @@
             <!-- Basic Radio Button end -->
 
         </div>
+        @endisset
     </div>
 </div>
 @endsection
@@ -132,15 +134,11 @@
                 minutes + "phút " + seconds + "giây ";
 
             // If the count down is over, write some text 
-            if (distance < 0) {
+            if (distance < 1) {
                 clearInterval(x);
-                document.getElementById("demo").innerHTML = "Câu Hỏi";
-                $('.content-body').attr('hidden',false);
+                location.reload();
             }
         }, 1000);
-    }
-    else{
-        $('.content-body').attr('hidden',false);
     }
 </script>
 @endsection

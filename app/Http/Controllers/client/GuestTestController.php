@@ -12,10 +12,10 @@ class GuestTestController extends Controller
     //
     public function index()
     {
-        $timeStart = Carbon::create('2021-11-30 17:08:00');
+        $timeStart = Carbon::create('2021-11-30 08:50:00');
         if (Carbon::now()->gt($timeStart) == false) {
-            $model = Question::inRandomOrder()->limit(12)->get();
-            return view('user.link', compact('model', 'timeStart'));
+            // $model = Question::inRandomOrder()->limit(12)->get();
+            return view('user.link', compact('timeStart'));
         } else {
             $timeStart = 'none';
             $model = Question::inRandomOrder()->limit(12)->get();
