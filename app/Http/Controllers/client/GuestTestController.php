@@ -13,21 +13,21 @@ class GuestTestController extends Controller
     //
     public function index()
     {
-        //hiển thị câu hỏi bằng cách load lại trang trong js
-        // $timeStart = Carbon::create('2021-11-30 08:50:00');
-        // if (Carbon::now()->gt($timeStart) == false) {
-        //     // $model = Question::inRandomOrder()->limit(12)->get();
-        //     return view('user.link', compact('timeStart'));
-        // } else {
-        //     $timeStart = 'none';
-        //     $model = Question::inRandomOrder()->limit(12)->get();
-        //     return view('user.link', compact('model', 'timeStart'));
-        // }
+        // hiển thị câu hỏi bằng cách load lại trang trong js
+        $timeStart = Carbon::create('2022-11-30 08:50:00');
+        if (Carbon::now()->gt($timeStart) == false) {
+            // $model = Question::inRandomOrder()->limit(12)->get();
+            return view('user.link', compact('timeStart'));
+        } else {
+            $timeStart = 'none';
+            $model = Question::inRandomOrder()->limit(12)->get();
+            return view('user.link', compact('model', 'timeStart'));
+        }
 
 
         //hiển thị câu hỏi bằng pusher không cần load lại trang
-        GetQuestionJob::dispatch()->delay(now()->addSeconds(5));
-        return view('user.link2');
+        // GetQuestionJob::dispatch()->delay(now()->addSeconds(5));
+        // return view('user.link2');
     }
     public function point(Request $request)
     {
